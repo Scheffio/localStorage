@@ -12,6 +12,21 @@ let counter = 0
 
 let mas = []
 
+function generateTable() {
+    let arr = JSON.parse(localStorage.getItem("records"))
+    console.log(arr);
+
+    arr.forEach((elem) => {
+        let tr = document.createElement("tr")
+        Array.from(Object.values(elem)).forEach((item) => {
+            let td = document.createElement("td")
+            td.innerHTML = item
+            tr.appendChild(td)
+        })
+        table.appendChild(tr)
+    })
+}
+
 input.addEventListener('input', () => {
     if (input.value.length >= 1) {
         start.removeAttribute("disabled")
@@ -45,7 +60,7 @@ function addRecord(name, seconds, milliseconds) {
     obj.seconds = seconds
     obj.milliseconds = milliseconds
     mas.push(obj)
-    
+
 
     localStorage.setItem("records", JSON.stringify(mas))
     input.focus()
@@ -56,8 +71,8 @@ function showWin() {
     wintime.innerHTML = `Время игры ${timefloor(date.getSeconds())}.${(date.getMilliseconds())}`
     clearInterval(getTimer)
     modal.style.display = "flex"
-    setTimeout(()=> {
-        date = new Date(0,0,0,0,0,0,0,0)
+    setTimeout(() => {
+        date = new Date(0, 0, 0, 0, 0, 0, 0, 0)
         timeText.textContent = "00.00"
         username.textContent = "name"
         modal.style.display = "none"
@@ -65,7 +80,7 @@ function showWin() {
 }
 
 
-let date = new Date(0,0,0,0,0,0,0,0)
+let date = new Date(0, 0, 0, 0, 0, 0, 0, 0)
 
 function timer() {
     getTimer = setInterval(() => {
@@ -82,4 +97,5 @@ function timefloor(n) {
 window.onload = () => {
     start.setAttribute("disabled", true)
     click.setAttribute("disabled", true)
+    generateTable()
 }
