@@ -6,9 +6,11 @@ let table = document.querySelector("table")
 let timeText = document.querySelector(".right p:nth-child(1)")
 let username = document.querySelector(".right p:nth-child(2)")
 
+let modal = document.querySelector(".modal")
+
 let counter = 0
 
-let modal = document.querySelector(".modal")
+let mas = []
 
 input.addEventListener('input', () => {
     if (input.value.length >= 1) {
@@ -23,25 +25,28 @@ start.addEventListener("click", () => {
     username.textContent = input.value
     input.value = ''
     click.removeAttribute('disabled')
-    click.addEventListener("click", () => {
-        counter++
-        console.log(counter)
-        if (counter > 10) {
-            counter = 0
-            start.setAttribute("disabled", true)
-            click.setAttribute("disabled", true)
-            showWin()
-            addRecord(username.textContent, timefloor(date.getSeconds()), date.getMilliseconds())
-        }
-    })
+})
 
+click.addEventListener("click", () => {
+    counter++
+    console.log(counter);
+    if (counter > 10) {
+        counter = 0
+        start.setAttribute("disabled", true)
+        click.setAttribute("disabled", true)
+        showWin()
+        addRecord(username.textContent, timefloor(date.getSeconds()), date.getMilliseconds())
+    }
 })
 
 function addRecord(name, seconds, milliseconds) {
-    let mas = [{}]
-    mas.forEach((elem, index) => {
-        elem[index] = name
-    })
+    let obj = new Object();
+    obj.name = name
+    obj.seconds = seconds
+    obj.milliseconds = milliseconds
+    mas.push(obj)
+    
+
     localStorage.setItem("records", JSON.stringify(mas))
     input.focus()
 }
