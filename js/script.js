@@ -5,12 +5,29 @@ let cancel = document.querySelector(".cancel")
 let table = document.querySelector("table")
 let timeText = document.querySelector(".right p:nth-child(1)")
 let username = document.querySelector(".right p:nth-child(2)")
+let nametosave = ''
 
 let modal = document.querySelector(".modal")
 
 let counter = 0
 
 let mas = []
+
+cancel.addEventListener("click", () => {
+    table.innerHTML = ' '
+    let titles = document.createElement("tr")
+    let nametd = document.createElement("td")
+    let timetd = document.createElement("td")
+
+    nametd.innerHTML = "Имя"
+    timetd.innerHTML = "Время"
+
+    table.appendChild(titles)
+    titles.appendChild(nametd)
+    titles.appendChild(timetd)
+
+    localStorage.clear()
+})
 
 function recordsSort(arr) {
     arr.sort(({ time: a }, { time: b }) => a - b)
@@ -34,10 +51,14 @@ function generateTable() {
 
     arr.forEach((elem) => {
         let tr = document.createElement("tr")
-        Array.from(Object.values(elem)).forEach((item) => {
+        Array.from(Object.values(elem)).forEach((item,index) => {
             let td = document.createElement("td")
             td.innerHTML = item
             tr.appendChild(td)
+
+            if(index == 1) {
+                
+            }
         })
         table.appendChild(tr)
     })
@@ -46,16 +67,22 @@ function generateTable() {
 input.addEventListener('input', () => {
     if (input.value.length >= 1) {
         start.removeAttribute("disabled")
+        start.classList.remove("disabled")
     } else {
-        click.setAttribute("disabled", true)
+        start.setAttribute("disabled", true)
+        start.classList.add("disabled")
     }
 })
 
 start.addEventListener("click", () => {
     timer()
-    username.textContent = input.value
+    username.textContent = `Имя: ${input.value}`
+    nametosave = input.value
     input.value = ''
     click.removeAttribute('disabled')
+    start.classList.remove("disabled")
+    start.addAttribute('disabled', true)
+    start.classList.add("disabled")
 })
 
 click.addEventListener("click", () => {
@@ -64,8 +91,10 @@ click.addEventListener("click", () => {
         counter = 0
         start.setAttribute("disabled", true)
         click.setAttribute("disabled", true)
+        start.classList.add("disabled")
+        click.classList.add("disabled")
         showWin()
-        addRecord(username.textContent, timefloor(date.getSeconds()) + date.getMilliseconds())
+        addRecord(nametosave, timefloor(date.getSeconds()) + date.getMilliseconds())
         generateTable()
     }
 })
@@ -88,8 +117,8 @@ function showWin() {
     modal.style.display = "flex"
     setTimeout(() => {
         date = new Date(0, 0, 0, 0, 0, 0, 0, 0)
-        timeText.textContent = "00.00"
-        username.textContent = "name"
+        timeText.textContent = "Время: 00.00"
+        username.textContent = "Имя: имя"
         modal.style.display = "none"
     }, 2000)
 }
@@ -101,7 +130,7 @@ function timer() {
     getTimer = setInterval(() => {
         date.setSeconds(date.getSeconds())
         date.setMilliseconds(date.getMilliseconds() + 5)
-        timeText.textContent = `${timefloor(date.getSeconds())}.${date.getMilliseconds()}`
+        timeText.textContent = `Время: ${timefloor(date.getSeconds())}.${date.getMilliseconds()}`
     }, 1)
 }
 
@@ -111,6 +140,8 @@ function timefloor(n) {
 
 window.onload = () => {
     start.setAttribute("disabled", true)
+    start.classList.add("disabled")
     click.setAttribute("disabled", true)
+    click.classList.add("disabled")
     generateTable()
 }

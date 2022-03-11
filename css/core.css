@@ -10,6 +10,22 @@
 
 table {
     margin-top: 20px;
+    background-color: #CB997E;
+}
+
+table > tr {
+    text-align: center;
+}
+
+table > tr > td{
+    text-align: center;
+    color: #FFE8D6;
+    padding: 0px 15px 5px 10px;
+    border-right: 2px solid #FFE8D6;
+}
+
+table > tr > td:last-child {
+    border-right: 0;
 }
 
 .cancel {
@@ -28,6 +44,7 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+    background-color: #FFE8D6;
 }
 
 .modal {
@@ -48,12 +65,112 @@ body {
     height: 100%;
     max-width: 500px;
     max-height: 400px;
-    background-color: #fff;
+    background-color: #CB997E;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .content-modal > p {
-    color: black;
+    color: #FFE8D6;
+}
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 28px;
+    color: #CB997E;
+}
+
+.click {
+    border-radius: 50%;
+    background-color: #CB997E;
+    width: 100px;
+    height: 100px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 0;
+    border: 0;
+    transition: .3s;
+}
+
+.click a {
+    text-decoration: none;
+    color: #FFE8D6;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.click:hover {
+    transition: .3s;
+    background-color: #FFE8D6;
+}
+
+.click:hover > a {
+    color: #CB997E;
+}
+
+input {
+    background-color: #CB997E;
+    outline: 0;
+    border: 0;
+    color: #FFE8D6;
+    padding: 10px;
+    text-align: center;
+}
+
+input::placeholder{
+    color: #FFE8D6;
+    text-align: center;
+}
+
+.start {
+    background-color: #CB997E;
+    outline: 0;
+    height: 57px;
+    width: 150px;
+    border: 0;
+    transition: .3s;
+}
+
+.start a {
+    color: #FFE8D6;
+    text-decoration: none;
+}
+
+.start:hover {
+    background-color: #DDBEA9;
+    transition: .3s;
+}
+
+.start:hover a {
+    color: #CB997E;
+}
+
+.cancel {
+    background-color: #CB997E;
+    outline: 0;
+    height: 57px;
+    width: 225px;
+    border: 0;
+    transition: .3s;
+}
+
+.cancel a {
+    color: #FFE8D6;
+    text-decoration: none;
+}
+
+.cancel:hover {
+    background-color: #DDBEA9;
+    transition: .3s;
+}
+
+.cancel:hover a {
+    color: #CB997E;
+}
+
+.disabled {
+    opacity: .3;
 }
