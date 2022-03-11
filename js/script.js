@@ -12,9 +12,25 @@ let counter = 0
 
 let mas = []
 
+function recordsSort(arr) {
+    arr.sort(({ time: a }, { time: b }) => a - b)
+    return arr
+}
+
 function generateTable() {
-    let arr = JSON.parse(localStorage.getItem("records"))
-    console.log(arr);
+    let arr = recordsSort(JSON.parse(localStorage.getItem("records")))
+
+    table.innerHTML = ' '
+    let titles = document.createElement("tr")
+    let nametd = document.createElement("td")
+    let timetd = document.createElement("td")
+
+    nametd.innerHTML = "Имя"
+    timetd.innerHTML = "Время"
+
+    table.appendChild(titles)
+    titles.appendChild(nametd)
+    titles.appendChild(timetd)
 
     arr.forEach((elem) => {
         let tr = document.createElement("tr")
@@ -44,21 +60,20 @@ start.addEventListener("click", () => {
 
 click.addEventListener("click", () => {
     counter++
-    console.log(counter);
-    if (counter > 10) {
+    if (counter > 9) {
         counter = 0
         start.setAttribute("disabled", true)
         click.setAttribute("disabled", true)
         showWin()
-        addRecord(username.textContent, timefloor(date.getSeconds()), date.getMilliseconds())
+        addRecord(username.textContent, timefloor(date.getSeconds()) + date.getMilliseconds())
+        generateTable()
     }
 })
 
-function addRecord(name, seconds, milliseconds) {
+function addRecord(name, time) {
     let obj = new Object();
     obj.name = name
-    obj.seconds = seconds
-    obj.milliseconds = milliseconds
+    obj.time = time
     mas.push(obj)
 
 
