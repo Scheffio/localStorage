@@ -57,7 +57,10 @@ function generateTable() {
             tr.appendChild(td)
 
             if(index == 1) {
-                
+                let s = item.substring(0,2)
+                let ms = item.substring(2)
+                td.innerHTML = `${s}.${ms}`
+                tr.appendChild(td)
             }
         })
         table.appendChild(tr)
@@ -80,8 +83,8 @@ start.addEventListener("click", () => {
     nametosave = input.value
     input.value = ''
     click.removeAttribute('disabled')
-    start.classList.remove("disabled")
-    start.addAttribute('disabled', true)
+    click.classList.remove("disabled")
+    start.setAttribute('disabled', true)
     start.classList.add("disabled")
 })
 
@@ -103,10 +106,17 @@ function addRecord(name, time) {
     let obj = new Object();
     obj.name = name
     obj.time = time
-    mas.push(obj)
 
+    let isExist = localStorage.getItem("records")
 
-    localStorage.setItem("records", JSON.stringify(mas))
+    if(isExist) {
+        let existedmas = JSON.parse(localStorage.getItem("records"))
+        existedmas.push(obj)
+        localStorage.setItem("records", JSON.stringify(existedmas))
+    }else if(!isExist) {
+        mas.push(obj)
+        localStorage.setItem("records", JSON.stringify(mas))
+    }
     input.focus()
 }
 

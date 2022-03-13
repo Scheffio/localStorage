@@ -10,7 +10,7 @@
 
 table {
     margin-top: 20px;
-    background-color: #CB997E;
+    background-color: #B39CD0;
 }
 
 table > tr {
@@ -19,9 +19,9 @@ table > tr {
 
 table > tr > td{
     text-align: center;
-    color: #FFE8D6;
+    color: #FBEAFF;
     padding: 0px 15px 5px 10px;
-    border-right: 2px solid #FFE8D6;
+    border-right: 2px solid #FBEAFF;
 }
 
 table > tr > td:last-child {
@@ -44,11 +44,11 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: #FFE8D6;
+    background-color: #FBEAFF;
 }
 
 .modal {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #00000080;
     position: fixed;
     left: 0;
     top: 0;
@@ -65,25 +65,25 @@ body {
     height: 100%;
     max-width: 500px;
     max-height: 400px;
-    background-color: #CB997E;
+    background-color: #B39CD0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .content-modal > p {
-    color: #FFE8D6;
+    color: #FBEAFF;
 }
 
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 28px;
-    color: #CB997E;
+    color: #B39CD0;
 }
 
 .click {
     border-radius: 50%;
-    background-color: #CB997E;
+    background-color: #00C9A7;
     width: 100px;
     height: 100px;
     margin-top: 70px;
@@ -93,40 +93,43 @@ body {
     outline: 0;
     border: 0;
     transition: .3s;
+    border: 3px solid transparent;
 }
 
 .click a {
     text-decoration: none;
-    color: #FFE8D6;
+    color: #fff;
     text-transform: uppercase;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .click:hover {
     transition: .3s;
-    background-color: #FFE8D6;
+    background-color: transparent;
+    border: 3px solid #00C9A7;
 }
 
 .click:hover > a {
-    color: #CB997E;
+    color: #00C9A7;
 }
 
 input {
-    background-color: #CB997E;
+    background-color: #00C9A7;
     outline: 0;
     border: 0;
-    color: #FFE8D6;
+    color: #fff;
     padding: 10px;
     text-align: center;
 }
 
 input::placeholder{
-    color: #FFE8D6;
+    color: #fff;
     text-align: center;
 }
 
 .start {
-    background-color: #CB997E;
+    background-color: #00C9A7;
     outline: 0;
     height: 57px;
     width: 150px;
@@ -135,21 +138,21 @@ input::placeholder{
 }
 
 .start a {
-    color: #FFE8D6;
+    color: #fff;
     text-decoration: none;
 }
 
 .start:hover {
-    background-color: #DDBEA9;
+    background-color: #01af92;
     transition: .3s;
 }
 
 .start:hover a {
-    color: #CB997E;
+    color: #fff;
 }
 
 .cancel {
-    background-color: #CB997E;
+    background-color: #00C9A7;
     outline: 0;
     height: 57px;
     width: 225px;
@@ -158,17 +161,17 @@ input::placeholder{
 }
 
 .cancel a {
-    color: #FFE8D6;
+    color: #fff;
     text-decoration: none;
 }
 
 .cancel:hover {
-    background-color: #DDBEA9;
+    background-color: #01af92;
     transition: .3s;
 }
 
 .cancel:hover a {
-    color: #CB997E;
+    color: #fff;
 }
 
 .disabled {
